@@ -30,7 +30,7 @@ class App extends React.Component {
           {/* <SearchBar /> */}
           <div className="App-playlist">
            <SearchResults searchResults={this.state.searchResults}/> {/* Passing the state of the App component’s searchResults to the SearchResults component */}
-           <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}/> 
+           <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}/> {/* Passing the playlist name and tracks from the app component to the plyalist component. */}
           </div>
         </div>
       </div>
