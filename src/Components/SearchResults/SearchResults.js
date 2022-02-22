@@ -7,7 +7,11 @@ class SearchResults extends React.Component {
         return (
             <div className="SearchResults">
             <h2>Results</h2>
-            <TrackList tracks={this.props.searchResults}/> {/* Passing the search results from the SearchResults component to the TrackList component.*/}
+            {/* Passing the search results from the SearchResults component to the TrackList component*/}
+            {/* also step 43: pass the onAdd method to the SearchResults component as an onAdd attribute, see below onAdd attribute being passed. An attribute called isRemoval is also passed.*/}
+            <TrackList tracks={this.props.searchResults} 
+                       onAdd={this.props.onAdd} 
+                       isRemoval={false}/> 
             </div>
         )
     }
