@@ -23,6 +23,7 @@ class App extends React.Component {
     };
     this.addTrack = this.addTrack.bind(this); /* step 42, we went to our constructor function here, and after this.state we bind addTrack */
     this.removeTrack = this.removeTrack.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this); /* step 58: After we created the method below, called 'updatePlaylistName', so in the App constructor method, bind this to .updatePlaylistName() */
   }
 
   addTrack(track) {
@@ -42,6 +43,13 @@ class App extends React.Component {
     this.setState({ playlistTracks: tracks });
   }
 
+  /* step 57: set the state and change the state of playlistName to the value that's passed in. */
+  updatePlaylistName(name) {
+    this.setState({ playlistName: name });
+  }
+
+  
+
   render() {
     return (
       <div>
@@ -54,7 +62,9 @@ class App extends React.Component {
            {/* Passing the playlist name and tracks from the app component to the plyalist component. */}
            <Playlist playlistName={this.state.playlistName} 
             playlistTracks={this.state.playlistTracks} 
-            onRemove={this.removeTrack} /> 
+            onRemove={this.removeTrack} 
+            onNameChange={this.updatePlaylistName}/> 
+            {/* step 58: Pass updatePlaylistName to the Playlist component as an attribute named onNameChange */}
           </div>
         </div>
       </div>

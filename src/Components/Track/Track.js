@@ -12,7 +12,7 @@ class Track extends React.Component {
     /* On the button element that has a plus symbol, add an onClick property with the value set to this.addTrack. So it should be: onClick={this.addTrack} so that whenever there is a clock on this button we will call this.addTrack*/
     renderAction() {
         if (this.props.isRemoval) {
-            return <button className="Track-action" onClick={this.removeTrack}>-</button>
+            return <button className="Track-action" onClick={this.removeTrack}>-</button> /* removes track if user clicks on minus button */
         } else {
             return <button className="Track-action" onClick={this.addTrack}>+</button>
         }
