@@ -24,6 +24,7 @@ class App extends React.Component {
     this.addTrack = this.addTrack.bind(this); /* step 42, we went to our constructor function here, and after this.state we bind addTrack */
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this); /* step 58: After we created the method below, called 'updatePlaylistName', so in the App constructor method, bind this to .updatePlaylistName() */
+    this.savePlaylist = this.savePlaylist.bind(this); /* Step 64: After we created the savePlaylist method, we bind the current value of this to .savePlaylist() and next, we will pass savePlaylist to the Playlist component as an attribute called onSave.*/
   }
 
   addTrack(track) {
@@ -48,7 +49,13 @@ class App extends React.Component {
     this.setState({ playlistName: name });
   }
 
-  
+  /* step 63: In App.js create a method called savePlaylist (see below), that will generate an array of uri values called trackURIs from the playlistTracks property.
+  Do step step 64 next (after creating this method): Bind the current value of this to .savePlaylist(). Pass savePlaylist to the Playlist component as an attribute called onSave.*/
+  savePlaylist() {
+    /* writing an alert to see if the button is linked to this correctly. Press button on app to see if it works. */
+    /* alert("This button is linked correctly"); */
+    const trackUris = this.state.playlistTracks.map(track => track.uri);
+  }
 
   render() {
     return (
@@ -63,7 +70,8 @@ class App extends React.Component {
            <Playlist playlistName={this.state.playlistName} 
             playlistTracks={this.state.playlistTracks} 
             onRemove={this.removeTrack} 
-            onNameChange={this.updatePlaylistName}/> 
+            onNameChange={this.updatePlaylistName}
+            onSave={this.savePlaylist}/> 
             {/* step 58: Pass updatePlaylistName to the Playlist component as an attribute named onNameChange */}
           </div>
         </div>
