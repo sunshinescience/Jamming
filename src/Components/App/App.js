@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
+import SearchBar from '../SearchBar/SearchBar';
 
 // Add a SearchBar component 
   
@@ -25,6 +26,7 @@ class App extends React.Component {
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this); /* step 58: After we created the method below, called 'updatePlaylistName', so in the App constructor method, bind this to .updatePlaylistName() */
     this.savePlaylist = this.savePlaylist.bind(this); /* Step 64: After we created the savePlaylist method, we bind the current value of this to .savePlaylist() and next, we will pass savePlaylist to the Playlist component as an attribute called onSave.*/
+    this.search = this.search.bind(this);
   }
 
   addTrack(track) {
@@ -57,12 +59,16 @@ class App extends React.Component {
     const trackUris = this.state.playlistTracks.map(track => track.uri);
   }
 
+  search(term) {
+    console.log(term);
+  }
+
   render() {
     return (
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
-          {/* <SearchBar /> */}
+          <SearchBar onSearch={this.search}/>
           <div className="App-playlist">
            <SearchResults searchResults={this.state.searchResults}
            onAdd={this.addTrack}/> {/* Step 42: Passing the state of the App component’s searchResults to the SearchResults component */}
