@@ -70,4 +70,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # Jamming
 
-Note: In App.js, when I tried to pass the .search() to the SearchBar component as an onSearch attribute, I got an error that SearcchBar was undefined. I found that I had not imported it into App.js, which fixed the problem using `import SearchBar from '../SearchBar/SearchBar';`.
+
