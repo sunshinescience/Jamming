@@ -1,4 +1,4 @@
-import { clientId } from '../credentials';
+import { clientId } from '../../credentials';
 const redirectUri = 'http://localhost:3000/';
 
 let accessToken;
