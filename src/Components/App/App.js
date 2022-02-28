@@ -1,8 +1,11 @@
 import React from 'react';
 import './App.css';
+
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
+import Spotify from '../../util/Spotify';
+
 
 // Add a SearchBar component 
   

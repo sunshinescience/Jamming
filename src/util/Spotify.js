@@ -1,4 +1,4 @@
-import { clientId } from '../../credentials';
+import { clientId } from '../env';
 const redirectUri = 'http://localhost:3000/';
 
 let accessToken;
@@ -24,7 +24,28 @@ const Spotify = {
             const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
             window.location = accessUrl;
         }
-    }
+    },
+
+    search(term) {
+        const accessToken = Spotify.getAccessToken();
+        // Inside .search(), start the promise chain by returning a GET request (using fetch()) to the Spotify endpoint `https://api.spotify.com/v1/search?type=track&q=TERM`
+        return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        }).then(jsonResponse => {
+            if (!jsonResponse.tracks) {
+                return [];
+            }
+            return jsonResponse.tracks.items.map(track => ({
+                id: track.id,
+                name: track.name,
+                artist: track.artists[0].name,
+                album: track.album.name,
+                uri: track.uri
+            }));
+        });   
+    },
 }
 
 export default Spotify;
