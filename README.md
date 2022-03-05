@@ -70,4 +70,64 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # Jamming
 
+__________________________________________________________________________________________________
 
+### Run the app:
+From the command line, change directories (type `cd` in the command line) into the folder called ' ' and run the command:
+`npm start`
+
+If the page doesn't open, go to the site `http://localhost:3000/`
+
+Go [here](https://developer.spotify.com/documentation/web-api/) and do a quick search for uri, which brings you to this [page](https://developer.spotify.com/documentation/web-api/?query=uri). You'll see a Spotify URI paraemeter with the description:
+The resource identifier that you can enter, for example, in the Spotify Desktop client’s search box to locate an artist, album, or track. To find a Spotify URI simply right-click (on Windows) or Ctrl-Click (on a Mac) on the artist’s or album’s or track’s name.
+And you see an example to the right. So if you right click on a song, you can copy spotify uri. 
+
+Note: In App.js, when I tried to pass the .search() to the SearchBar component as an onSearch attribute, I got an error that SearcchBar was undefined. I found that I had not imported it into App.js, which fixed the problem using `import SearchBar from '../SearchBar/SearchBar';`.
+
+### Get a Spotify user's access token
+In order to get a Spotify access token, we will use the [spotify applications registration flow](https://developer.spotify.com/dashboard/) and [Spotify application guide](https://developer.spotify.com/documentation/general/guides/authorization/.)
+
+You will need the user’s access token to make requests to the Spotify API. You will use the request parameters in step four of the implicit grant flow to make requests. See [here](https://developer.spotify.com/documentation/general/guides/authorization/implicit-grant/) to look into it.
+
+### Setup user's account and make requests
+If the access token is not already set, check the URL to see if it has just been obtained.
+
+We will be using the [Implicit Grant Flow](https://developer.spotify.com/documentation/general/guides/authorization/) to setup a user’s account and make requests. The implicit grant flow returns a user’s access token in the URL.
+
+In the implicit grant flow, values for the access token and expiration time are in the URL parameter after authentication.
+
+Use window.location.href and the .match() method to retrieve the access token and expiration time from the URL.
+
+Example URL from Spotify API:
+
+`https://example.com/callback#access_token=NwAExz...BV3O2Tk&token_type=Bearer&expires_in=3600&state=123`
+
+Use the .match() method on the URL string. Provide the regular expressions below as inputs:
+
+`/access_token=([^&]*)/`
+`/expires_in=([^&]*)/`
+
+### Register the application using the Spotify application registration flow
+Register the application using the [Spotify application registration flow](https://developer.spotify.com/dashboard/applications).
+
+Give your application a relevant name and description:
+App name: react-the-Jam
+Description: App that allows users to save songs to a playlist 
+
+Also, add the following Redirect URI: `http://localhost:3000/`
+
+
+
+#### Saved user's playlist as last steps
+But, the app is not pulling in data from Spotify. 
+
+#### App is not working
+Going back to step 84 to try to redo steps. It looks like other things work.
+
+In SearchBar.js I added an onClick for the button:
+`<button className="SearchButton" onClick={this.search}>SEARCH</button>`
+
+But the app still isn't working
+
+When I enter a song and click search, the url changed to:
+http://localhost:3000/#access_token=BQB383dIbHTOOVc_VLex0Tz6xrKZu4UYGxbbppvfcbTqAojDa7-dGKACMIGVNdgwpN3AUtcZbgZ1y_jtELQtpthMdBYipJdePLW03B2HISPib5e0oXc3TrwP1N7ipLs1-_Om1_V5Q_hGo3IbkZtxlVITOVmNrKkDfbyFyP2hoS7HNxH0TrVLpIi4SPG2i5KUA1Y&token_type=Bearer&expires_in=3600

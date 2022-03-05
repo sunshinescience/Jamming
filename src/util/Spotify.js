@@ -1,6 +1,6 @@
-import { clientId } from '../env';
+//import { clientId } from '../env.js';
+const clientId = 'bc3b0b45c2254561abaae3a7129643dc';
 const redirectUri = 'http://localhost:3000/';
-
 let accessToken;
 
 const Spotify = {
