@@ -2,7 +2,7 @@ import React from 'react';
 import './SearchBar.css';
 
 class SearchBar extends React.Component {
-    constructor(props) {
+    constructor(props){
         super(props);
 
         this.state = {
@@ -13,22 +13,23 @@ class SearchBar extends React.Component {
         this.handleTermChange = this.handleTermChange.bind(this);
     }
 
-    search() {
+    handleTermChange(e){
+        this.setState({term: e.target.value});
+    }
+
+    search(){
         this.props.onSearch(this.state.term);
     }
 
-    /* The state of the property term is being updated now with what the user types in the input tag */
-    handleTermChange(event) {
-        this.setState({ term: event.target.value });
-    }
-
-    render() {
+    render(){
         return (
             <div className="SearchBar">
-            <input placeholder="Enter A Song, Album, or Artist" onChange={this.handleTermChange} />
-            <button className="SearchButton" onClick={this.search}>SEARCH</button>
-          </div>  
-        )
+                <input placeholder="Enter A Song, Album, or Artist" 
+                    onChange = {this.handleTermChange}/>
+                <button className="SearchButton"
+                    onClick={this.search}>SEARCH</button>
+            </div>
+        );
     }
 }
 
