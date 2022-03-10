@@ -124,10 +124,29 @@ But, the app is not pulling in data from Spotify.
 #### App is not working
 Going back to step 84 to try to redo steps. It looks like other things work.
 
-In SearchBar.js I added an onClick for the button:
+**Fix**: In SearchBar.js I added an onClick for the button:
 `<button className="SearchButton" onClick={this.search}>SEARCH</button>`
 
 But the app still isn't working
 
 When I enter a song and click search, the url changed to:
 http://localhost:3000/#access_token=BQB383dIbHTOOVc_VLex0Tz6xrKZu4UYGxbbppvfcbTqAojDa7-dGKACMIGVNdgwpN3AUtcZbgZ1y_jtELQtpthMdBYipJdePLW03B2HISPib5e0oXc3TrwP1N7ipLs1-_Om1_V5Q_hGo3IbkZtxlVITOVmNrKkDfbyFyP2hoS7HNxH0TrVLpIi4SPG2i5KUA1Y&token_type=Bearer&expires_in=3600
+
+If search isn’t working there are several possible fail points:
+
+    Spotify component may have failed to successfully fetch the data.
+    may not have saved the data into state correctly
+    components may not have passed the data as props
+    all of the above may be correct, however may not have rendered the data correctly to the screen (eg in the Track component).
+
+**Fix**: In Spotify.js, I added this to the first part of the search method 
+        `.then( response => {
+            return response.json();
+        })`
+
+Now the search is working, however, clicking save to spotify doesn't work.
+
+### Debugging
+See [here](https://www.codecademy.com/learn/javascript-errors-debugging). If using Google Chrome Developer Tools, install the React developer tool extension. It has a components tab (in the line where there is the “console” tab, select the >> button and from the dropdown menu open Components), that you navigate your component tree structure and see what props are being passed between them.
+
+Another debugging tool is to use console.log() at different points in your code to see what value is being grabbed and passed between your props.
