@@ -116,8 +116,6 @@ Description: App that allows users to save songs to a playlist
 
 Also, add the following Redirect URI: `http://localhost:3000/`
 
-
-
 #### Saved user's playlist as the last steps
 But, the app is not pulling in data from Spotify. 
 
@@ -155,6 +153,8 @@ Another debugging tool is to use console.log() at different points in your code 
 You will start by installing surge globally.
 
 In your console, run npm install --global surge. 
+
+After you see the project come up, press enter.
 
 #### Before you deploy, you need to think of a domain name with the following format:
 `SOME_NAME.surge.sh`
