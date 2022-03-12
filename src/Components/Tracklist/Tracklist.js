@@ -3,7 +3,7 @@ import './Tracklist.css';
 import Track from '../Track/Track';
 
 class Tracklist extends React.Component {
-    render(){
+    render() {
         return (
             <div className="TrackList">
                 {

@@ -118,10 +118,10 @@ Also, add the following Redirect URI: `http://localhost:3000/`
 
 
 
-#### Saved user's playlist as last steps
+#### Saved user's playlist as the last steps
 But, the app is not pulling in data from Spotify. 
 
-#### App is not working
+#### App is not pulling in data from Spotify
 Going back to step 84 to try to redo steps. It looks like other things work.
 
 **Fix**: In SearchBar.js I added an onClick for the button:
@@ -144,9 +144,8 @@ If search isn’t working there are several possible fail points:
             return response.json();
         })`
 
-Now the search is working, however, clicking save to spotify doesn't work.
-
 ### Debugging
 See [here](https://www.codecademy.com/learn/javascript-errors-debugging). If using Google Chrome Developer Tools, install the React developer tool extension. It has a components tab (in the line where there is the “console” tab, select the >> button and from the dropdown menu open Components), that you navigate your component tree structure and see what props are being passed between them.
 
 Another debugging tool is to use console.log() at different points in your code to see what value is being grabbed and passed between your props.
+

@@ -4,15 +4,14 @@ import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
-
 import Spotify from '../../util/Spotify';
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
-      playlistName: 'Playlist 1',
+      playlistName: 'My Playlist',
       playListTracks: [],
       searchResults: []
     }
@@ -24,23 +23,23 @@ class App extends React.Component {
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
   }
   
-  addTrack(track){
+  addTrack(track) {
     const addList = this.state.playListTracks;
-    if(addList.find(saved => saved.id === track.id)){
+    if (addList.find(saved => saved.id === track.id)){
       return;
     }
     addList.push(track);
     this.setState({playListTracks: addList});
   }
 
-  removeTrack(track){
+  removeTrack(track) {
     const removeList = this.state.playListTracks.filter(current => current.id !== track.id);
     this.setState({playListTracks: removeList});
   }
 
-  savePlaylist(){
+  savePlaylist() {
     const trackURIs = this.state.playListTracks.map(track => track.uri);
-    Spotify.savePlaylist(this.state.playlistName, trackURIs).then(()=>{
+    Spotify.savePlaylist(this.state.playlistName, trackURIs).then(()=> {
       this.setState({
         playlistName: 'New Playlist',
         playListTracks: []
@@ -48,18 +47,17 @@ class App extends React.Component {
     })
   }
 
-  search(term){
-    Spotify.search(term).then(result =>{
-      this.setState({searchResults: result});
-    });
-    
+  search(term) {
+    Spotify.search(term).then(searchResults => {
+      this.setState({searchResults: searchResults});
+    }) 
   }
 
-  updatePlaylistName(name){
+  updatePlaylistName(name) {
     this.setState({playlistName: name});
   }
 
-  render(){
+  render() {
     return (
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
@@ -84,4 +82,4 @@ class App extends React.Component {
 }
 
 export default App;
-
+ 

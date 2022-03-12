@@ -60,7 +60,8 @@ const Spotify = {
         const headers = { Authorization: `Bearer ${accessToken}`}; // A headers variable, set to an object with an Authorization parameter containing the user’s access token
         let userId;
 
-        return fetch('https://api.spotify.com/v1/me', { headers: headers}).then(response => response.json()
+        return fetch('https://api.spotify.com/v1/me', { headers: headers}
+        ).then(response => response.json()
         ).then(jsonResponse => {
             userId = jsonResponse.id;
             return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`,
