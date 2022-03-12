@@ -149,3 +149,30 @@ See [here](https://www.codecademy.com/learn/javascript-errors-debugging). If usi
 
 Another debugging tool is to use console.log() at different points in your code to see what value is being grabbed and passed between your props.
 
+### Deploy
+#### You can use [surge]() to deploy your Jammming project.
+
+You will start by installing surge globally.
+
+In your console, run npm install --global surge. 
+
+#### Before you deploy, you need to think of a domain name with the following format:
+`SOME_NAME.surge.sh`
+
+SOME_NAME can be replaced with anything you like.
+
+Next, you need to replace or add this URI to two locations in your project.
+
+    In *Spotify.js, set redirectUri to your new domain
+    In your Spotify application, add your new domain as a redirect URI
+
+#### Back in the command line, from the Jammming project’s root directory, run:
+`npm run build`
+
+#### cd into the build directory and run the command:
+`surge`
+
+ollow the steps on the screen. Change the domain value to your new URI.
+
+Congrats! You’ve just deployed a React App that queries the Spotify API!
+
