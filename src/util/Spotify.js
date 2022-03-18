@@ -1,5 +1,5 @@
 import { clientId } from '../env';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'http://jamjammm.surge.sh';
 
 let accessToken;
 

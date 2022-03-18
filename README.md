@@ -148,15 +148,19 @@ See [here](https://www.codecademy.com/learn/javascript-errors-debugging). If usi
 Another debugging tool is to use console.log() at different points in your code to see what value is being grabbed and passed between your props.
 
 ### Deploy
-#### You can use [surge]() to deploy your Jammming project.
+One can use [surge](https://surge.sh/help/getting-started-with-surge) to deploy the project.
 
 You will start by installing surge globally.
 
-In your console, run npm install --global surge. 
+-  First, ensure you have a recent version of Node.js.
+-  Then, install Surge using npm by running the following command: npm install --global surge. I needed to preface this command with sudo. 
 
-After you see the project come up, press enter.
+**Step 1**: Run the following in the command line:
+`sudo npm install --global surge`
 
-#### Before you deploy, you need to think of a domain name with the following format:
+Then you can run surge from within any directory, to publish that directory onto the web.
+
+Before you deploy, you need to think of a domain name with the following format:
 `SOME_NAME.surge.sh`
 
 SOME_NAME can be replaced with anything you like.
@@ -169,10 +173,19 @@ Next, you need to replace or add this URI to two locations in your project.
 #### Back in the command line, from the Jammming project’s root directory, run:
 `npm run build`
 
-#### cd into the build directory and run the command:
+**step 2**: cd into the build directory and run the command:
 `surge`
 
-ollow the steps on the screen. Change the domain value to your new URI.
+**Step 3**: It may propmt you to create an account. Provide an email and password (pressing enter after each one). Then the project is already filled out for you, so press enter again. For the domain, you can change it to what you want, then press enter. I chose:
+`jamjammm.surge.sh`
 
-Congrats! You’ve just deployed a React App that queries the Spotify API!
+**Step 4**: Change the domain value to your new URI. Go to [Spotify](https://developer.spotify.com/dashboard/login), log in. Click on your application. Click on edit settings. Scroll to Rdeirect URIs. click remove and enter the new redirect URI: http://jamjammm.surge.sh Then click add.
 
+**step 5**: In Spotify.js, set redirectUri to your new domain as follows: 
+const redirectUri = 'http://jamjammm.surge.sh';
+
+**Step 6**: cd into the project's folder (run cd jammming/ in the command line) and type `npm run build`. Then cd into the build folder and type in the command line `surge`. Click enter when you see project in the command line. Then make sure your domain name is correct (in this case it is: jamjammm.surge.sh).
+
+**Note**: Getting an error from surge showing "Page not found". The fix was to put an index file in the root directory. So From the jamming folder, I went into the jamming folder on my laptop, the one that has the public and src folders (i.e., the 'root' directory) in it. And I pasted the copied (that was copied from the public folder) index.html file into the root jamming directory. Next, in the command line, I cc'd into the jamming (root) directory. I typed in `npm run build` and hit return. I then cc'd into the build directory by typing `cd build` in the command line and hit return. Next, I typed `surge` in the command line and hit enter to deploy it again. And it worked!
+
+The app is now online at this [page](http://jamjammm.surge.sh).
